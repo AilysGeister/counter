@@ -1,5 +1,5 @@
 <?php
-function headerHTML(string $title): void {
+function headHTML(string $title): void {
     echo "
 <header>
     <meta charset='utf-8'>
@@ -8,5 +8,9 @@ function headerHTML(string $title): void {
     <link rel='icon' href='/resources/images/logo.png'>
     <title>" .$title."</title>
 </header>";
+}
+
+function headerHTML(): string {
+    return "<nav class='navbar'><ul><li><a href='/'>Counter</a></li><li><a href='/stats'>Statistics</a></li></ul></nav>";
 }
 ?>

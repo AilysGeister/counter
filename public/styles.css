@@ -1,0 +1,34 @@
+body {
+    margin: 0;
+    font-family: glypha;
+}
+
+.navbar {
+    ul {
+        margin: 0;
+        text-align: center;
+        background-color: #C41E3A;
+    }
+
+    li {
+        gap: 100px;
+        display: inline-block;
+        align-content: center;
+
+        a {
+            margin: 5px;
+            padding: 14px 16px;
+            display: block;
+            border-radius: 10%;
+            color: azure;
+            font-size: large;
+            background-color: #f12042;
+            text-decoration: none;
+        }
+    }
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+}
