@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/controller/db_pgsql.php';
+require_once __DIR__ . '/controller/db_MySQL.php';
 
 use Dotenv\Dotenv;
 
