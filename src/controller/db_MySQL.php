@@ -10,10 +10,10 @@ class db_MySQL extends Database {
      public function __construct() {
          $this->connection = new mysqli(
              $_ENV['DB_HOST'],
-             $_ENV['DB_USERNAME'],
+             $_ENV['DB_USER'],
              $_ENV['DB_PASSWORD'],
              $_ENV['DB_NAME'],
-             $_ENV['DB_PORT']);
+             (int)$_ENV['DB_PORT']);
      }
 
     public function query($query): bool | mysqli_result {

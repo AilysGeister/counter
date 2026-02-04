@@ -20,16 +20,16 @@ class CounterController {
      * @return void
      */
     public function store($amount): void {
-        //$query = "INSERT INTO entries (amount) VALUES (".$amount.")";
-        //$GLOBALS["database"]->query($query);
-        echo $amount;
+        $query = "INSERT INTO entries (amount) VALUES (".$amount.")";
+        $GLOBALS["database"]->query($query);
+        header("location: /");
     }
 
     private function update(): void {
         $query = "SELECT amount FROM entries";
         $result = $GLOBALS['database']->query($query);
         if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc($result)) {
+            foreach ($result as $row) {
                 $this->count += $row["amount"];
             }
         }
