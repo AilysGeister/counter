@@ -25,10 +25,20 @@ $router->get('/', function () use ($counter, $counterView) {
 $router->post('/store', function () use ($counter) {
     $counter->store($_POST['amount']);
 });
-$router->get('/stats/', function () {
-    statsView();
+$router->get('/stats/', function () use ($counter) {
+    statsView(null, null, $counter);
 });
-$router->get('/stats/{begin}-{end}', function ($begin, $end) {});
+$router->post('/stats/', function () {
+    $beginUnix = strtotime($_POST['begin']);
+    $endUnix = strtotime($_POST['end']);
+    header("location: /stats/".$beginUnix."-".$endUnix);
+});
+$router->get('/stats/{begin}-{end}', function ($begin, $end) use ($counter) {
+    statsView($begin, $end, $counter);
+});
+$router->post('/stats/download', function () use ($counter) {
+    $counter->download(strtotime($_POST['begin']), strtotime($_POST['end']));
+});
 
 $dispatcher = new Dispatcher($router->getData());
 

@@ -13,13 +13,14 @@ class CounterView {
             <div>
                 <table><tr><td>Currently:</td><td>".$counter->getCount()."</td></tr></table>
             </div>
-            <form method='post' action='/store'>
+            <form name='counterForm' method='post' action='/store'>
             <h1>Counter</h1>
-                <label>Update counter: <input type='number' name='amount'></label>
+                <label>Update counter: <input type='number' name='amount' value='0'></label>
+                <button type='button' onclick='increment(1)'>+</button><button type='button' onclick='increment(-1)'>-</button>
                 <input type='submit' name='submit' value='Submit'>
             </form>
         </div>
-    </div></body>";
+    </div><script src='/script.js'></script></body>";
     }
 }
 ?>
