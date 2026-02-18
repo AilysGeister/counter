@@ -1,11 +1,12 @@
 <?php
 function headHTML(string $title): void {
     echo "
+<!DOCTYPE html>
 <header>
     <meta charset='utf-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' href='/styles.css'>
-    <link rel='icon' href='/resources/images/logo.png'>
+    <link rel='icon' href='/resources/images/favicon.png'>
     <title>" .$title."</title>
 </header>";
 }
