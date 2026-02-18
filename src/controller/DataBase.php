@@ -9,7 +9,7 @@ abstract class DataBase {
      * @param $result
      * @return array
      */
-    public function resultToArray($result): array {
+    public function resultToArray($result): array | false {
         //PDOstatement:
         if ($result instanceof PDOStatement) {
             return $result->fetchAll(PDO::FETCH_ASSOC);

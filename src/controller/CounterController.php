@@ -139,5 +139,49 @@ class CounterController {
             return true;
         }
     }
+
+    /**
+     * Convert the entry table into a csv file, and download it.
+     * @param $begin
+     * @param $end
+     * @return void
+     */
+    public function download($begin, $end): void {
+        //Initialization:
+        $result = $this->getStatistics($begin, $end);
+        $data = $GLOBALS["database"]->resultToArray($result);
+
+        //Open raw memory as file so no temp files needed, you might run out of memory though:
+        $f = fopen('php://memory', 'w');
+
+        //Loop over the input array:
+        foreach ($data as $line) {
+            // generate csv lines from the inner arrays
+            fputcsv($f, $line, ',');
+        }
+
+        //Reset the file pointer to the start of the file:
+        fseek($f, 0);
+
+        //Tell the browser it's going to be a csv file:
+        header('Content-Type: text/csv');
+
+        //Tell the browser we want to save it instead of displaying it:
+        header('Content-Disposition: attachment; filename="data.csv";');
+
+        //Make php send the generated csv lines to the browser:
+        fpassthru($f);
+
+        //Once it is over stay on the stats page:
+        exit;
+    }
+
+    function dd($obj) {
+        $args = func_get_args();
+        $n = count($args);
+        for($i = 0; $i < $n; $i++) {
+            error_log(print_r($args[$i], true));
+        }
+    }
 }
 ?>

@@ -33,7 +33,7 @@ function statsView($begin, $end, $counter): void {
     }
     </script>
     <body>".headerHTML()."
-        <div id='main'>
+        <div class='main'>
             <div id='dateSelector'>
                 <h2>Select dates:</h2>
                 <form method='post' action='/stats'>
@@ -45,15 +45,17 @@ function statsView($begin, $end, $counter): void {
                 </form>
             </div>
             
-            <div id='chartoContainer'></div>
-            
             <div id='download'>
+            <h2>Download into CSV:</h2>
                 <form method='post' action='/stats/download'>
                     <input type='hidden' name='begin' id='begin' value=".$begin.">
                     <input type='hidden' name='end' id='end' value=".$end.">
                     <input type='submit' value='Download'>
                 </form>
             </div>
+            
+            <div id='chartContainer'></div>
+            
         </div>
     <script src=\"https://cdn.canvasjs.com/canvasjs.min.js\"></script>
     </body>";
